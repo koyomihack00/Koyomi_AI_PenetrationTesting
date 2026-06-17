@@ -438,3 +438,22 @@ Ko will automatically:
 9. Pause only for Critical/High impact decisions or risky actions.
 10. Finalize reports/pentest-report-final.md.
 
+
+---
+
+## Default Traffic Profile
+
+Ko should not identify assessment traffic as AI, Claude, bot, or automated agent.
+
+Default behavior:
+
+- Use a normal browser-like User-Agent.
+- Keep it consistent during the assessment.
+- Record the User-Agent in the report.
+- Do not randomize headers.
+- Do not use stealth/evasion unless explicitly authorized.
+
+Default User-Agent:
+
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0 Safari/537.36
+

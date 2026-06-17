@@ -78,3 +78,9 @@ If no additional safe work remains:
 - finalize dashboard/status.json
 - set phase to completed_target_assessment
 - stop
+
+Traffic profile rule:
+Do not identify traffic as AI, Claude, bot, or automated agent.
+Use a standard browser-like User-Agent consistently.
+Log the User-Agent used in reports/pentest-report-final.md.
+Do not randomize headers or use stealth/evasion unless explicitly authorized.
