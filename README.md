@@ -540,3 +540,14 @@ Unauthorized testing is prohibited.
 # License
 
 Refer to the LICENSE file for licensing information.
+
+---
+
+# BurpSuite MCP Extension Support
+
+Ko supports the PortSwigger Burp Suite MCP Server BApp extension.
+
+Default endpoint:
+
+```text
+http://127.0.0.1:9876
