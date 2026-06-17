@@ -584,3 +584,22 @@ Default endpoint:
 
 ```text
 http://127.0.0.1:9876
+
+# Modes
+
+Ko supports multiple assessment modes.
+
+| Mode | Purpose |
+|--------|----------|
+| work | Client pentest |
+| web | Web application pentest |
+| ctf | CTF challenges |
+| bugbounty | Public bug bounty |
+| lab | HTB / THM / Labs |
+
+Mode selection influences:
+
+- Policy
+- Skill selection
+- Reporting
+- Approval gates
