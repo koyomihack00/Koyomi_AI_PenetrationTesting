@@ -24,7 +24,40 @@ The goal is to reduce repetitive setup work while maintaining consistent pentest
 </p>
 
 ---
+---
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Vision](#vision)
+- [Current Status](#current-status)
+- [Architecture](#architecture)
+- [Assessment Workflow](#assessment-workflow)
+- [Full Workflow](#full-workflow)
+- [Project Structure](#project-structure)
+- [Included Skill Sources](#included-skill-sources)
+- [Installation](#installation)
+- [Creating Targets](#creating-targets)
+- [Target Structure](#target-structure)
+- [What Is CLAUDE.md](#what-is-claudemd)
+- [Ko Intent Mode](#ko-intent-mode)
+- [Ko Core](#ko-core)
+- [Skill Optimization](#skill-optimization)
+- [Autonomous Processing](#autonomous-processing)
+- [BurpSuite MCP Extension Support](#burpsuite-mcp-extension-support)
+- [Reporting](#reporting)
+- [Finding Lifecycle](#finding-lifecycle)
+- [Severity Sorting](#severity-sorting)
+- [Default Traffic Profile](#default-traffic-profile)
+- [Credentials](#credentials)
+- [Git Submodules](#git-submodules)
+- [Updating the Repository](#updating-the-repository)
+- [Current Limitations](#current-limitations)
+- [Roadmap](#roadmap)
+- [Security Notice](#security-notice)
+- [License](#license)
+
+---
 # Vision
 
 Desired workflow:
