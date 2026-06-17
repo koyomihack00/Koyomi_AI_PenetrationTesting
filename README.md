@@ -585,6 +585,8 @@ Default endpoint:
 ```text
 http://127.0.0.1:9876
 
+---
+
 # Modes
 
 Ko supports multiple assessment modes.
@@ -603,3 +605,4 @@ Mode selection influences:
 - Skill selection
 - Reporting
 - Approval gates
+---
