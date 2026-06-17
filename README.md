@@ -94,3 +94,39 @@ Ko Core will:
 4. sort findings by severity
 5. renumber final finding IDs
 6. update reports/pentest-report-final.md
+
+## Autonomous Decision + Token Optimization
+
+Ko is designed to continue automatically for safe pentest tasks and only pause when a high-impact decision is required.
+
+Auto-continue tasks:
+- recon
+- service discovery
+- HTTP/HTTPS review
+- TLS/header/cookie review
+- source review
+- version detection
+- non-intrusive validation
+- evidence collection
+- report update
+
+Ko asks before:
+- Critical/High impact decision
+- exploitation
+- credential testing
+- brute force/password spray
+- auth bypass validation
+- state-changing action
+- availability-impacting action
+- accessing additional sensitive data
+
+Skill optimization:
+- Ko reads the skill index first
+- selects only top 1-3 relevant skills
+- avoids loading all upstream repositories
+- stores selected skills in dashboard/status.json
+- logs selected skills in reports/pentest-report-final.md
+
+Run Ko Core:
+
+    ./scripts/ko-core-run.sh <TARGET_FOLDER>

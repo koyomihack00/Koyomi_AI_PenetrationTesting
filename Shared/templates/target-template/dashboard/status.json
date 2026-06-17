@@ -1,12 +1,48 @@
 {
-  "current_phase": "initialized",
-  "selected_skills": [],
+  "current_phase": "ko_core_routing_complete",
+  "selected_skills": [
+    "web-pentest",
+    "tls-review",
+    "recon-osint",
+    "auth-session-review",
+    "cloud-security",
+    "mobile-pentest"
+  ],
   "selected_agents": [],
   "services": [],
   "findings": [],
   "vulnerabilities": [],
   "evidence": [],
   "latest_command": "",
-  "next_actions": ["Read CLAUDE.md and confirm scope"],
-  "last_updated": ""
+  "next_actions": [
+    "Continue safe assessment automatically"
+  ],
+  "last_updated": "",
+  "skill_optimization": {
+    "selected_skills": [
+      "web-pentest",
+      "auth-session-review",
+      "tls-review"
+    ],
+    "selection_reason": "Selected top relevant skills only to reduce token usage and avoid loading all skill sources.",
+    "max_skills_loaded": 3,
+    "token_strategy": [
+      "Read KO_SKILL_INDEX first",
+      "Load only selected skill summaries",
+      "Avoid reading full upstream repositories unless needed",
+      "Prefer existing evidence before new scans",
+      "Summarize long outputs before sending back to Claude"
+    ],
+    "updated": "2026-06-17T03:50:10.831888Z"
+  },
+  "ko_profile": {
+    "web": true,
+    "tls": true,
+    "osint": true,
+    "auth": true,
+    "cloud": true,
+    "mobile": true
+  },
+  "ko_decision": "AUTO_CONTINUE",
+  "ko_decision_updated": "2026-06-17T03:50:11.146305Z"
 }
