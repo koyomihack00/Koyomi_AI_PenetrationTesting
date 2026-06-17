@@ -410,61 +410,31 @@ The framework is designed to support safe, scoped, professional penetration test
 
 ---
 
-## One Command Pentest Mode
+## Ko Intent Mode
 
-Ko can be launched with a single command:
+Preferred usage:
 
-    ko-pentest TARGET CLIENT_NAME
+    cd ~/Desktop/AI_By_Ko/Work/CLIENT_NAME
+    claude
 
-Example:
+Then inside Claude Code:
 
-    ko-pentest 192.168.1.10 ACME
+    Pentest 192.168.1.10
 
-This command will:
+or:
 
-1. Check or create the client workspace
-2. Check scope/targets.txt
-3. Add the target to the local workspace scope if needed
-4. Create the target folder if missing
-5. Run Ko Core
-6. Select optimized skills
-7. Start Claude Code with the standard Ko prompt
-8. Continue safe assessment automatically
-9. Pause only for Critical/High impact decisions or risky actions
-10. Write reports/pentest-report-final.md
+    Pentest example.com
 
-Safe actions run automatically:
+Ko will automatically:
 
-- recon
-- service discovery
-- HTTP/HTTPS review
-- TLS/header/cookie review
-- version detection
-- source review
-- evidence collection
-- dashboard updates
-- report updates
-
-Ko asks before:
-
-- exploitation
-- credential testing
-- brute force
-- password spraying
-- authentication bypass validation
-- state-changing actions
-- availability-impacting actions
-- accessing additional sensitive data
-
-### Install ko-pentest command
-
-    mkdir -p ~/.local/bin
-    ln -sf ~/Desktop/Ko-AI-Pentest/Ko-AI-Pentest/scripts/ko-pentest.sh ~/.local/bin/ko-pentest
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
-    source ~/.zshrc
-
-### Usage
-
-    ko-pentest 192.168.1.10 ACME
-    ko-pentest example.com ACME
+1. Extract the target.
+2. Check or create the target workspace.
+3. Confirm scope.
+4. Run Ko Core if available.
+5. Select relevant skills.
+6. Continue safe assessment.
+7. Log every action.
+8. Update dashboard, notes, findings, and report.
+9. Pause only for Critical/High impact decisions or risky actions.
+10. Finalize reports/pentest-report-final.md.
 
