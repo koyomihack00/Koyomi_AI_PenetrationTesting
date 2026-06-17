@@ -1,0 +1,9 @@
+[submodule "Shared/skills/sources/offensive-claude"]
+	path = Shared/skills/sources/offensive-claude
+	url = https://github.com/hypnguyen1209/offensive-claude.git
+[submodule "Shared/skills/sources/9arm-skills"]
+	path = Shared/skills/sources/9arm-skills
+	url = https://github.com/thananon/9arm-skills.git
+[submodule "Shared/skills/sources/osint-skill"]
+	path = Shared/skills/sources/osint-skill
+	url = https://github.com/smixs/osint-skill.git
