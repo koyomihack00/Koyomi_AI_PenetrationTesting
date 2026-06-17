@@ -19,6 +19,10 @@ The framework provides:
 
 The goal is to reduce repetitive setup work while maintaining consistent pentest methodology and reporting.
 
+<p align="center">
+  <img src="docs/images/full-workflow.png" width="1400">
+</p>
+
 ---
 
 # Vision
@@ -75,37 +79,9 @@ Current implementation provides:
 ---
 
 # Architecture
-
-```text
-User
- │
- ▼
-Claude Code
- │
- ▼
-Ko Intent Mode
- │
- ▼
-CLAUDE.md
- │
- ▼
-Ko Core
- ├─ Skill Loader
- ├─ Skill Optimizer
- ├─ Skill Router
- ├─ Decision Engine
- ├─ Finding Engine
- └─ Report Engine
- │
- ▼
-Assessment Workflow
- │
- ▼
-Evidence
-Findings
-Reports
-```
-
+<p align="center">
+  <img src="docs/images/architecture.png" width="1400">
+</p>
 ---
 
 # Project Structure
@@ -351,41 +327,9 @@ Selected Skills:
 ---
 
 # Assessment Workflow
-
-```text
-Load CLAUDE.md
-        │
-        ▼
-Validate Scope
-        │
-        ▼
-Load Existing Evidence
-        │
-        ▼
-Load Skills
-        │
-        ▼
-Skill Optimization
-        │
-        ▼
-Safe Assessment
-        │
-        ▼
-Evidence Collection
-        │
-        ▼
-Finding Validation
-        │
-        ▼
-Report Updates
-        │
-        ▼
-Final Severity Sorting
-        │
-        ▼
-Final Report
-```
-
+<p align="center">
+  <img src="docs/images/assessment-workflow.png" width="1400">
+</p>
 ---
 
 # Autonomous Processing
