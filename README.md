@@ -1,62 +1,126 @@
 # Ko AI Pentest Framework
 
-Ko AI Pentest Framework is a Claude Code-ready penetration testing workspace for authorized security assessments.
+## Overview
 
-It provides a reusable project structure, target isolation, scope control, skill routing, autonomous safe assessment workflow, evidence tracking, and final report generation.
+Ko AI Pentest Framework is a Claude Code-driven penetration testing workspace framework designed for authorized security assessments.
 
-This project is intended for professional, authorized penetration testing only.
+The framework provides:
 
----
+- Client workspace management
+- Per-target isolation
+- Scope enforcement
+- Rules of Engagement (ROE) support
+- Skill orchestration
+- Evidence management
+- Finding management
+- Severity-based reporting
+- Claude Code workflow automation
+- Reusable project structure
 
-## Key Features
-
-- Client workspace template
-- Per-target folder isolation
-- Scope-first workflow
-- Rules of Engagement enforcement
-- Claude Code permission policy
-- Ko AI unified pentest skill
-- Skill source submodules
-- Auto skill selection
-- Token-saving skill optimization
-- Autonomous safe assessment mode
-- Approval gate for high-risk actions
-- Evidence collection
-- Finding tracking
-- Severity sorting
-- Final report generation
-- GitHub-ready reusable template
+The goal is to reduce repetitive setup work while maintaining consistent pentest methodology and reporting.
 
 ---
 
-## Included Skill Sources
+# Vision
 
-This project integrates external skill sources as Git submodules:
+Desired workflow:
 
-- offensive-claude
-- 9arm-skills
-- osint-skill
+```text
+claude
 
-Submodule path:
+Pentest example.com
+```
 
-Shared/skills/sources/
+or
 
-Unified Ko skill path:
+```text
+claude
 
-Shared/skills/ko-ai-pentest/SKILL.md
+Pentest 192.168.1.10
+```
+
+Ko should:
+
+1. Identify the target
+2. Load workspace context
+3. Load target context
+4. Load relevant skills
+5. Review existing evidence
+6. Continue assessment
+7. Update findings
+8. Update reporting
+9. Request approval only when required
 
 ---
 
-## Main Project Structure
+# Current Status
 
+Current implementation provides:
+
+| Component | Status |
+|------------|---------|
+| Workspace Management | ✅ |
+| Scope Enforcement | ✅ |
+| CLAUDE.md Workflow | ✅ |
+| Skill Routing | ✅ |
+| Skill Optimization | ✅ |
+| Evidence Tracking | ✅ |
+| Finding Tracking | ✅ |
+| Severity Sorting | ✅ |
+| Report Generation | ✅ |
+| Intent Mode Policy | ✅ |
+| Fully Autonomous Agent | ⚠️ Partial |
+| Automatic Tool Execution | ⚠️ Partial |
+
+---
+
+# Architecture
+
+```text
+User
+ │
+ ▼
+Claude Code
+ │
+ ▼
+Ko Intent Mode
+ │
+ ▼
+CLAUDE.md
+ │
+ ▼
+Ko Core
+ ├─ Skill Loader
+ ├─ Skill Optimizer
+ ├─ Skill Router
+ ├─ Decision Engine
+ ├─ Finding Engine
+ └─ Report Engine
+ │
+ ▼
+Assessment Workflow
+ │
+ ▼
+Evidence
+Findings
+Reports
+```
+
+---
+
+# Project Structure
+
+```text
 Ko-AI-Pentest/
 ├── README.md
-├── GITHUB_SETUP.md
+├── LICENSE
+├── SECURITY.md
 ├── install.sh
-├── .gitignore
+│
 ├── scripts/
 │   ├── create-target.sh
 │   └── ko-core-run.sh
+│
 ├── ko-core/
 │   ├── skill-loader.py
 │   ├── skill-optimizer.py
@@ -66,58 +130,98 @@ Ko-AI-Pentest/
 │   ├── severity_engine.py
 │   ├── report-engine.py
 │   └── workflow-engine.py
+│
 ├── Shared/
 │   ├── prompts/
-│   │   └── resume-target.md
 │   ├── policies/
-│   │   └── autonomous-processing-policy.md
 │   ├── skills/
-│   │   ├── ko-ai-pentest/
-│   │   └── sources/
 │   └── templates/
+│
 └── templates/
     └── client/
+```
 
 ---
 
-## Install
+# Included Skill Sources
 
-Clone with submodules:
+The framework supports integrating skill repositories through Git submodules.
 
-git clone --recurse-submodules https://github.com/YOUR_USERNAME/YOUR_REPO.git
+Examples:
 
-cd YOUR_REPO
+- offensive-claude
+- 9arm-skills
+- osint-skill
 
-Install a client workspace:
+Installed under:
 
+```text
+Shared/skills/sources/
+```
+
+Unified Ko skill:
+
+```text
+Shared/skills/ko-ai-pentest/
+```
+
+---
+
+# Installation
+
+Clone repository:
+
+```bash
+git clone --recurse-submodules https://github.com/YOUR_USERNAME/Ko-AI-Pentest.git
+
+cd Ko-AI-Pentest
+```
+
+Install workspace:
+
+```bash
 ./install.sh CLIENT_NAME
+```
 
 Example:
 
+```bash
 ./install.sh ACME
+```
 
-This creates:
+Workspace created:
 
+```text
 ~/Desktop/AI_By_Ko/Work/ACME/
+```
 
 ---
 
-## Create a Target
+# Creating Targets
 
-Go to the client workspace:
+Go to workspace:
 
+```bash
 cd ~/Desktop/AI_By_Ko/Work/ACME
+```
 
-Create a new target:
+Create target:
 
-./scripts/create-target.sh 192.0.2.10
+```bash
+./scripts/create-target.sh 192.168.1.10
+```
 
-This creates:
+Target folder created:
 
-targets/192.0.2.10/
+```text
+targets/192.168.1.10/
+```
 
-Target folder structure:
+---
 
+# Target Structure
+
+```text
 targets/TARGET/
 ├── CLAUDE.md
 ├── scope/
@@ -129,331 +233,366 @@ targets/TARGET/
 ├── reports/
 ├── scripts/
 ├── tmp/
-├── .claude/
 └── secrets/
+```
 
 ---
 
-## What CLAUDE.md Does
+# What Is CLAUDE.md
 
-CLAUDE.md is the operating manual for Ko/Claude Code.
+Each target contains a dedicated CLAUDE.md.
+
+CLAUDE.md acts as the operating manual for Ko.
 
 It defines:
 
-- target context
-- scope rules
+- Scope behavior
 - Rules of Engagement
-- allowed actions
-- denied actions
-- approval gates
-- report format
-- logging rules
-- skill usage rules
-- final finding sorting rules
-- autonomous decision behavior
+- Allowed actions
+- Restricted actions
+- Approval gates
+- Reporting requirements
+- Evidence requirements
+- Finding requirements
+- Skill usage expectations
+- Severity sorting requirements
+- Autonomous workflow behavior
 
-Every target has its own CLAUDE.md so each assessment can be resumed safely from its own folder.
-
----
-
-## Run Ko on a Target
-
-Enter the target folder:
-
-cd ~/Desktop/AI_By_Ko/Work/ACME/targets/192.0.2.10
-
-Run Ko Core first:
-
-~/Desktop/Ko-AI-Pentest/Ko-AI-Pentest/scripts/ko-core-run.sh .
-
-Then start Claude Code with the standard prompt:
-
-claude "$(cat ~/Desktop/AI_By_Ko/Shared/prompts/resume-target.md)"
+Every target maintains its own CLAUDE.md.
 
 ---
 
-## Ko Core Engine
+# Ko Intent Mode
 
-Ko Core Engine is the automation and orchestration layer.
+Start Claude Code:
 
-It includes:
+```bash
+claude
+```
 
-- skill-loader.py
-- skill-optimizer.py
-- ko-router.py
-- decision-engine.py
-- finding-engine.py
-- severity_engine.py
-- report-engine.py
-- workflow-engine.py
+Then type:
 
-Ko Core performs:
+```text
+Pentest 192.168.1.10
+```
 
-1. Skill indexing
-2. Skill optimization
-3. Target profile detection
-4. Decision classification
-5. Finding parsing
-6. Severity sorting
-7. Final report section generation
+or
 
-Run Ko Core:
+```text
+Pentest example.com
+```
 
-./scripts/ko-core-run.sh TARGET_FOLDER
+Intent Mode should:
+
+1. Extract target
+2. Determine target type
+3. Locate target folder
+4. Resume existing target
+5. Create target if missing
+6. Load CLAUDE.md
+7. Load findings
+8. Load notes
+9. Load reports
+10. Continue assessment
+
+---
+
+# Ko Core
+
+Ko Core provides orchestration and workflow support.
+
+Components:
+
+```text
+skill-loader.py
+skill-optimizer.py
+ko-router.py
+decision-engine.py
+finding-engine.py
+severity_engine.py
+report-engine.py
+workflow-engine.py
+```
+
+Responsibilities:
+
+- Skill indexing
+- Skill optimization
+- Target classification
+- Workflow routing
+- Finding parsing
+- Severity sorting
+- Report generation
+
+---
+
+# Skill Optimization
+
+To reduce token consumption:
+
+1. Read skill index first
+2. Select only relevant skills
+3. Avoid loading all skill repositories
+4. Reuse evidence before scanning
+5. Avoid duplicate work
+6. Summarize large outputs
 
 Example:
 
-./scripts/ko-core-run.sh ~/Desktop/AI_By_Ko/Work/ACME/targets/192.0.2.10
+```text
+Target: Web Portal
 
----
-
-## Autonomous Processing Behavior
-
-Ko continues automatically for safe assessment tasks.
-
-Ko does not ask approval for:
-
-- safe recon
-- service discovery
-- HTTP review
-- HTTPS review
-- TLS review
-- header review
-- cookie review
-- version detection
-- page source review
-- non-intrusive validation
-- evidence collection
-- dashboard updates
-- notes updates
-- report updates
-- final report generation
-
-Ko asks before:
-
-- Critical or High impact decision
-- exploitation
-- credential testing
-- brute force
-- password spraying
-- authentication bypass validation
-- state-changing actions
-- availability-impacting actions
-- accessing additional sensitive data
-
-Goal:
-
-Ko should not ask approval for every command. It should continue until it reaches a meaningful risk decision or completes the assessment.
-
----
-
-## Skill Optimization
-
-Ko avoids loading every skill source into context.
-
-Optimization rules:
-
-1. Read the skill index first.
-2. Select only the top 1-3 relevant skills.
-3. Avoid reading full upstream repositories unless needed.
-4. Prefer local evidence before new scans.
-5. Summarize long outputs into files.
-6. Log selected skills to reports/pentest-report-final.md.
-7. Store selected skills in dashboard/status.json.
-
-Example selected skills:
-
+Selected Skills:
 - web-pentest
 - tls-review
-- recon-osint
 - auth-session-review
+```
 
 ---
 
-## Reporting
+# Assessment Workflow
 
-Primary report file:
+```text
+Load CLAUDE.md
+        │
+        ▼
+Validate Scope
+        │
+        ▼
+Load Existing Evidence
+        │
+        ▼
+Load Skills
+        │
+        ▼
+Skill Optimization
+        │
+        ▼
+Safe Assessment
+        │
+        ▼
+Evidence Collection
+        │
+        ▼
+Finding Validation
+        │
+        ▼
+Report Updates
+        │
+        ▼
+Final Severity Sorting
+        │
+        ▼
+Final Report
+```
 
+---
+
+# Autonomous Processing
+
+Ko should continue automatically for routine assessment tasks.
+
+Examples:
+
+- Reconnaissance
+- Service Discovery
+- HTTP Review
+- HTTPS Review
+- TLS Review
+- Header Review
+- Cookie Review
+- Version Identification
+- Evidence Collection
+- Report Updates
+
+Ko should not ask approval for routine safe tasks.
+
+---
+
+# Approval Gates
+
+Ko should request approval before:
+
+- Exploitation
+- Credential Testing
+- Password Spraying
+- Brute Force
+- Authentication Bypass Validation
+- State-Changing Actions
+- Availability-Impacting Actions
+- Accessing Additional Sensitive Data
+
+---
+
+# Reporting
+
+Primary report:
+
+```text
 reports/pentest-report-final.md
+```
 
-Ko logs every meaningful action into the report:
+Supporting files:
 
-- timestamp
-- command or action
-- reason
-- result
-- evidence path
-- finding relationship
-- next step
+```text
+findings/findings.md
+notes/status.md
+dashboard/status.json
+```
 
-The final report includes:
+Every meaningful action should be logged.
 
-- Executive Summary
-- Scope
-- Skills / Agents Used
-- Findings Summary
-- Final Sorted Findings
-- Detailed Findings
-- Recommendations
-- Evidence Index
-- Commands / Activity Log
-- Skipped / Blocked Actions
-- Final Conclusion
+Recommended fields:
+
+- Timestamp
+- Command
+- Action
+- Reason
+- Result
+- Evidence Path
+- Finding Relationship
+- Next Step
 
 ---
 
-## Finding Sorting Logic
+# Finding Lifecycle
 
-Ko always sorts findings by severity before assigning final IDs.
+Each finding should include:
 
-Severity order:
+- Finding ID
+- Original ID
+- Title
+- Severity
+- Description
+- How Discovered
+- Evidence
+- Impact
+- Recommendation
+- Validation Status
 
-1. Critical
-2. High
-3. Medium
-4. Low
-5. Informational
-6. Positive
+---
 
-After sorting, Ko assigns final IDs:
+# Severity Sorting
 
+Before final report generation:
+
+```text
+Critical
+High
+Medium
+Low
+Informational
+Positive
+```
+
+Then assign final IDs:
+
+```text
 F-001
 F-002
 F-003
+...
+```
 
-Original IDs are preserved as:
-
-Original ID: F-xxx
-
-This prevents old finding order from affecting the final report.
+Original IDs should remain preserved.
 
 ---
 
-## Scope Control
+# Default Traffic Profile
 
-Master scope is stored in:
+Ko should not identify itself as:
 
-scope/targets.txt
-scope/domains.txt
-scope/roe.md
-scope/out-of-scope.txt
+- AI
+- Claude
+- Bot
+- Automated Agent
 
-Ko must confirm scope before testing.
+Use a standard browser-like User-Agent consistently.
 
-If a target is not in scope:
-
-- stop
-- do not scan
-- do not make requests
-- report scope-blocked
+Document User-Agent usage in reporting.
 
 ---
 
-## Credentials
+# Credentials
 
-Credentials are optional and must be stored only in:
+Store credentials only in:
 
+```text
 secrets/credentials.env
+```
 
-Credential rules:
+Rules:
 
-- never commit credentials
-- never write passwords to reports
-- never print plaintext secrets
-- redact as [REDACTED]
-- use only with written authorization
+- Never commit credentials
+- Never commit secrets
+- Never print plaintext secrets in reports
+- Redact sensitive values
 
 ---
 
-## GitHub Submodules
+# Git Submodules
 
-Initialize submodules:
+Initialize:
 
+```bash
 git submodule update --init --recursive
+```
 
-Add submodules:
+Update:
 
-git submodule add https://github.com/hypnguyen1209/offensive-claude.git Shared/skills/sources/offensive-claude
-git submodule add https://github.com/thananon/9arm-skills.git Shared/skills/sources/9arm-skills
-git submodule add https://github.com/smixs/osint-skill.git Shared/skills/sources/osint-skill
-
-Clone with submodules:
-
-git clone --recurse-submodules REPO_URL
+```bash
+git submodule update --remote
+```
 
 ---
 
-## Do Not Commit
+# Updating the Repository
 
-Never commit:
+```bash
+git add .
 
-- credentials
-- .env files
-- tokens
-- secrets
-- evidence
-- scan output
-- screenshots
-- real client reports
-- exploit output
-- sensitive customer data
+git commit -m "Update project"
+
+git push
+```
 
 ---
 
-## Safety Notice
+# Current Limitations
 
-This framework is for authorized security testing only.
+Current version:
 
-Do not use it against systems you do not own or do not have written permission to assess.
-
-The framework is designed to support safe, scoped, professional penetration testing workflows.
-
----
-
-## Ko Intent Mode
-
-Preferred usage:
-
-    cd ~/Desktop/AI_By_Ko/Work/CLIENT_NAME
-    claude
-
-Then inside Claude Code:
-
-    Pentest 192.168.1.10
-
-or:
-
-    Pentest example.com
-
-Ko will automatically:
-
-1. Extract the target.
-2. Check or create the target workspace.
-3. Confirm scope.
-4. Run Ko Core if available.
-5. Select relevant skills.
-6. Continue safe assessment.
-7. Log every action.
-8. Update dashboard, notes, findings, and report.
-9. Pause only for Critical/High impact decisions or risky actions.
-10. Finalize reports/pentest-report-final.md.
-
+- Depends on Claude Code execution
+- Not a fully autonomous exploit agent
+- Requires authorized scope
+- Requires approval for high-risk actions
+- Requires operator oversight
 
 ---
 
-## Default Traffic Profile
+# Roadmap
 
-Ko should not identify assessment traffic as AI, Claude, bot, or automated agent.
+Planned improvements:
 
-Default behavior:
+- Better intent handling
+- Improved skill selection
+- Enhanced report generation
+- Additional workflow automation
+- Better target lifecycle management
+- Improved evidence indexing
 
-- Use a normal browser-like User-Agent.
-- Keep it consistent during the assessment.
-- Record the User-Agent in the report.
-- Do not randomize headers.
-- Do not use stealth/evasion unless explicitly authorized.
+---
 
-Default User-Agent:
+# Security Notice
 
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0 Safari/537.36
+This framework is intended only for authorized security assessments.
 
+Users are responsible for ensuring they have written authorization before testing any target.
+
+Unauthorized testing is prohibited.
+
+---
+
+# License
+
+Refer to the LICENSE file for licensing information.
