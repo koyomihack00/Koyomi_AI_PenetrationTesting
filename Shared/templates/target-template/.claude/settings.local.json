@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Write(*)",
+      "Edit(*)",
+      "TodoWrite(*)",
+      "Agent(*)",
+      "Skill(*)",
+      "Bash(*)"
+    ],
+    "ask": [],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(su *)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf $HOME)",
+      "Bash(chmod -R 777 /)",
+      "Bash(chown -R *)",
+      "Bash(mkfs*)",
+      "Bash(dd *)",
+      "Bash(curl * | bash)",
+      "Bash(wget * | bash)",
+      "Bash(hydra *)",
+      "Bash(medusa *)",
+      "Bash(ncrack *)",
+      "Bash(john *)",
+      "Bash(hashcat *)",
+      "Bash(sqlmap *)",
+      "Bash(msfconsole *)",
+      "Bash(msfvenom *)",
+      "Bash(hping3 *)",
+      "Bash(nping *)",
+      "Bash(slowloris *)",
+      "Bash(goldeneye *)",
+      "Bash(ab *)",
+      "Bash(wrk *)"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "current_phase": "initialized",
+  "selected_skills": [],
+  "selected_agents": [],
+  "services": [],
+  "findings": [],
+  "vulnerabilities": [],
+  "evidence": [],
+  "latest_command": "",
+  "next_actions": ["Read CLAUDE.md and confirm scope"],
+  "last_updated": ""
+}

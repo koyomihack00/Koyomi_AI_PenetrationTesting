@@ -1,0 +1,11 @@
+**/secrets/
+**/*.env
+**/tmp/
+**/evidence/
+**/scans/**/*.txt
+**/scans/**/*.xml
+**/scans/**/*.json
+**/scans/**/*.html
+**/reports/final/
+**/.DS_Store
+**/__pycache__/

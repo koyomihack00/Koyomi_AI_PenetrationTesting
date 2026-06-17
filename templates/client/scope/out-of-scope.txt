@@ -1,0 +1,1 @@
+Everything not explicitly listed in scope/targets.txt or scope/domains.txt is out of scope.

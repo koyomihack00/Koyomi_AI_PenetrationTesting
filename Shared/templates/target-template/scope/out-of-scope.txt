@@ -1,0 +1,1 @@
+Everything not listed in scope/targets.txt and the master project scope is out of scope.

@@ -1,0 +1,2 @@
+# Add approved domains here, one per line.
+# example.com
