@@ -1,251 +1,96 @@
-# Ko AI Pentest Project Template
+# Ko AI Pentest Framework
 
-Ko AI Pentest is a Claude Code-ready pentest workspace template for authorized security assessments. It gives each client and each target its own isolated folder, scope files, Claude instructions, reporting structure, dashboard JSON, evidence folders, and optional credential handling.
+Ko AI Pentest Framework is a Claude Code-ready workspace template for authorized penetration testing engagements.
 
-> Use this project only for authorized security testing. Do not test targets you do not own or do not have written permission to assess.
+## Features
 
-## What This Template Provides
+- Client workspace structure
+- Per-target folders
+- Scope and ROE controls
+- Claude Code permissions
+- Unified Ko AI pentest skill
+- Live reporting
+- Evidence tracking
+- Severity-sorted final reports
 
-- Client workspace generator
-- Per-target workspace generator
-- Claude Code instructions through `CLAUDE.md`
-- Safe autonomous assessment workflow
-- Scope enforcement
-- Skills/agents indexing
-- Unified Ko AI meta-skill wrapper
-- Live report logging to `reports/pentest-report-final.md`
-- Dashboard status tracking in `dashboard/status.json`
-- Final report sorting by severity, then renumbering final IDs
-- Optional shared credential file support with redaction rules
-- GitHub-safe `.gitignore` defaults
+## Included Skill Sources
 
-## Project Layout
+This project can integrate these Git submodules:
 
-```text
-AI_By_Ko/
-├── Shared/
-│   ├── prompts/
-│   │   └── resume-target.md
-│   ├── skills/
-│   │   └── ko-ai-pentest/
-│   │       ├── SKILL.md
-│   │       ├── references/
-│   │       │   └── KO_SKILL_INDEX.md
-│   │       └── scripts/
-│   │           └── build-ko-skill-index.sh
-│   └── templates/
-│       └── target-template/
-│           ├── CLAUDE.md
-│           ├── scope/
-│           ├── scans/
-│           ├── evidence/
-│           ├── findings/
-│           ├── notes/
-│           ├── dashboard/
-│           ├── reports/
-│           ├── scripts/
-│           ├── tmp/
-│           ├── .claude/
-│           └── secrets/
-└── Work/
-    └── CLIENT_NAME/
-        ├── CLAUDE.md
-        ├── LOCAL_SKILLS_INDEX.md
-        ├── scope/
-        ├── reports/final/
-        ├── scripts/
-        └── targets/
-```
+- offensive-claude
+- 9arm-skills
+- osint-skill
+
+Submodules path:
+
+Shared/skills/sources/
 
 ## Install
 
-```bash
-unzip Ko-AI-Pentest-GitHub-Ready.zip -d ~/Desktop/
-cd ~/Desktop/Ko-AI-Pentest-GitHub-Ready
-chmod +x install.sh
+git clone --recurse-submodules <YOUR_REPO_URL>
+cd Ko-AI-Pentest
 ./install.sh CLIENT_NAME
-```
 
 Example:
 
-```bash
-./install.sh CMA
-```
+./install.sh ACME
 
-This creates:
+## Create Target
 
-```text
-~/Desktop/AI_By_Ko/Work/CMA/
-```
+cd ~/Desktop/AI_By_Ko/Work/ACME
+./scripts/create-target.sh 192.0.2.10
 
-## Add Targets
+## Run Ko
 
-```bash
-cd ~/Desktop/AI_By_Ko/Work/CMA
-./scripts/create-target.sh 1.2.3.4
-```
-
-The script creates:
-
-```text
-targets/1.2.3.4/
-├── CLAUDE.md
-├── scope/targets.txt
-├── scans/
-├── evidence/
-├── findings/findings.md
-├── notes/status.md
-├── dashboard/status.json
-├── reports/pentest-report-final.md
-└── .claude/settings.local.json
-```
-
-## Start Claude Code for a Target
-
-```bash
-cd ~/Desktop/AI_By_Ko/Work/CMA/targets/1.2.3.4
+cd ~/Desktop/AI_By_Ko/Work/ACME/targets/192.0.2.10
 claude "$(cat ~/Desktop/AI_By_Ko/Shared/prompts/resume-target.md)"
-```
 
-## Scope Model
+## Primary Report
 
-Master scope lives at:
-
-```text
-Work/<CLIENT>/scope/targets.txt
-Work/<CLIENT>/scope/domains.txt
-Work/<CLIENT>/scope/roe.md
-Work/<CLIENT>/scope/out-of-scope.txt
-```
-
-Each target also has its own local scope file:
-
-```text
-targets/<TARGET>/scope/targets.txt
-```
-
-Ko must confirm scope before testing. If a target is not in the master scope, it should stop as scope-blocked.
-
-## Skills Model
-
-This template includes a unified Ko AI meta-skill:
-
-```text
-Shared/skills/ko-ai-pentest/SKILL.md
-```
-
-It is designed to coordinate local skill sources such as:
-
-- `offensive-claude`
-- `9arm-skills`
-- `osint-skill`
-
-Recommended setup using git submodules:
-
-```bash
-git submodule add https://github.com/hypnguyen1209/offensive-claude.git Shared/skills/sources/offensive-claude
-git submodule add https://github.com/thananon/9arm-skills.git Shared/skills/sources/9arm-skills
-git submodule add https://github.com/smixs/osint-skill.git Shared/skills/sources/osint-skill
-```
-
-Then build the local skill index:
-
-```bash
-./Shared/skills/ko-ai-pentest/scripts/build-ko-skill-index.sh
-```
-
-## Reporting Rules
-
-The main report for every target is:
-
-```text
 reports/pentest-report-final.md
-```
 
-Ko must log every meaningful action immediately:
+## Finding Order
 
-- timestamp
-- command/action
-- reason
-- how it helped
-- result summary
-- evidence path
-- finding relationship
-- next step
+Critical > High > Medium > Low > Informational > Positive
 
-## Final Finding Sorting Rule
+Final IDs are assigned after severity sorting:
 
-When finalizing a report, Ko must:
+F-001, F-002, F-003
 
-1. Collect all findings from existing evidence.
-2. Sort by severity first:
-   - Critical
-   - High
-   - Medium
-   - Low
-   - Informational
-   - Positive / Passed
-3. After sorting, assign final IDs:
-   - F-001
-   - F-002
-   - F-003
-4. Preserve old IDs as `Original ID`.
+## Safety
 
-## Credential Handling
+Authorized testing only.
 
-Optional credentials may be placed in:
+Do not use against systems without written permission.
 
-```text
-Shared/credentials/<client>/<name>.env
-```
+Never commit:
 
-Then symlink into a target:
-
-```bash
-mkdir -p targets/<TARGET>/secrets
-ln -sf ~/Desktop/AI_By_Ko/Shared/credentials/<client>/<name>.env targets/<TARGET>/secrets/credentials.env
-```
-
-Rules:
-
-- Never commit credentials.
-- Never print plaintext passwords in reports.
-- Redact secrets as `[REDACTED]`.
-- Ask before any state-changing authenticated action.
-
-## GitHub Safety
-
-The `.gitignore` blocks:
-
-- secrets
-- `.env` files
+- credentials
+- .env files
+- tokens
 - evidence
-- scan output
-- temp files
-- reports/final exports
+- scan outputs
+- real client reports
 
-Review before pushing.
+## Ko Core Engine
 
-## Typical Workflow
+Ko Core Engine adds lightweight orchestration:
 
-```text
-Install template
-↓
-Create client workspace
-↓
-Add scope
-↓
-Create target
-↓
-Run Claude Code in target folder
-↓
-Ko reads CLAUDE.md + scope + skills
-↓
-Ko performs safe authorized assessment
-↓
-Ko logs everything to pentest-report-final.md
-↓
-Ko writes findings and dashboard status
-↓
-Ko finalizes severity-sorted report
-```
+- skill-loader
+- ko-router
+- finding-engine
+- severity-engine
+- report-engine
+- workflow-engine
+
+Run Ko Core against a target:
+
+    ./scripts/ko-core-run.sh ~/Desktop/AI_By_Ko/Work/CLIENT_NAME/targets/TARGET
+
+Ko Core will:
+1. index skills
+2. select relevant skills
+3. parse findings
+4. sort findings by severity
+5. renumber final finding IDs
+6. update reports/pentest-report-final.md

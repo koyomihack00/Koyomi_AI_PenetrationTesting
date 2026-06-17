@@ -1,38 +1,37 @@
 # GitHub Setup
 
-## Create Local Repo
+## Clone
 
-```bash
-cd Ko-AI-Pentest-GitHub-Ready
-git init
-git add .
-git commit -m "Initial Ko AI Pentest template"
-```
+git clone --recurse-submodules <REPO_URL>
+cd Ko-AI-Pentest
 
-## Add Upstream Skill Sources as Submodules
+## Install
 
-```bash
-git submodule add https://github.com/hypnguyen1209/offensive-claude.git Shared/skills/sources/offensive-claude
-git submodule add https://github.com/thananon/9arm-skills.git Shared/skills/sources/9arm-skills
-git submodule add https://github.com/smixs/osint-skill.git Shared/skills/sources/osint-skill
-```
+./install.sh CLIENT_NAME
 
-Then rebuild the skill index after install:
+## Update Submodules
 
-```bash
-~/Desktop/AI_By_Ko/Shared/skills/ko-ai-pentest/scripts/build-ko-skill-index.sh
-```
+git submodule update --init --recursive
 
-## Push to GitHub
+## Create Target
 
-```bash
-git remote add origin git@github.com:<USER>/<REPO>.git
-git branch -M main
-git push -u origin main
-```
+cd ~/Desktop/AI_By_Ko/Work/CLIENT_NAME
+./scripts/create-target.sh TARGET_IP_OR_HOST
 
-## Clone with Submodules
+## Run Target
 
-```bash
-git clone --recurse-submodules git@github.com:<USER>/<REPO>.git
-```
+cd ~/Desktop/AI_By_Ko/Work/CLIENT_NAME/targets/TARGET_IP_OR_HOST
+claude "$(cat ~/Desktop/AI_By_Ko/Shared/prompts/resume-target.md)"
+
+## Do Not Commit
+
+Never commit:
+
+- credentials
+- .env
+- evidence
+- screenshots
+- real client reports
+- scan outputs
+- tokens
+- secrets

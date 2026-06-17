@@ -1,11 +1,32 @@
+# Secrets
 **/secrets/
 **/*.env
-**/tmp/
+**/*credential*
+**/*password*
+**/*token*
+**/*secret*
+
+# Evidence / client data
 **/evidence/
-**/scans/**/*.txt
-**/scans/**/*.xml
-**/scans/**/*.json
-**/scans/**/*.html
+**/scans/
+**/tmp/
+**/downloads/
+**/loot/
+**/screenshots/
+**/*.har
+**/*.pcap
+**/*.pcapng
+
+# Reports from real engagements
 **/reports/final/
-**/.DS_Store
-**/__pycache__/
+**/*real*
+**/*client*
+
+# Claude local/runtime
+**/.claude/settings.local.json
+.claude/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
