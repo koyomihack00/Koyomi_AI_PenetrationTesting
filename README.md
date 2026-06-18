@@ -230,21 +230,10 @@ Evidence
 Findings
 Reports
 ```
-
-If you include architecture images in the repository, place them here:
-
-```text
-docs/images/architecture.png
-```
-
-Then add this to the README:
-
-```html
 <p align="center">
   <img src="docs/images/architecture.png" width="1400">
 </p>
-```
-
+---
 [⬆ Back to Top](#table-of-contents)
 
 ---
@@ -252,55 +241,10 @@ Then add this to the README:
 ## Assessment Workflow
 
 The assessment workflow:
-
-```text
-Load CLAUDE.md
-        │
-        ▼
-Validate Scope
-        │
-        ▼
-Load Existing Evidence
-        │
-        ▼
-Load Skills
-        │
-        ▼
-Skill Optimization
-        │
-        ▼
-Safe Assessment
-        │
-        ▼
-Evidence Collection
-        │
-        ▼
-Finding Validation
-        │
-        ▼
-Report Updates
-        │
-        ▼
-Final Severity Sorting
-        │
-        ▼
-Final Report
-```
-
-Suggested image path:
-
-```text
-docs/images/assessment-workflow.png
-```
-
-README image block:
-
-```html
 <p align="center">
   <img src="docs/images/assessment-workflow.png" width="1400">
 </p>
-```
-
+---
 [⬆ Back to Top](#table-of-contents)
 
 ---
@@ -354,21 +298,10 @@ Severity Sorting
    ▼
 Final Report
 ```
-
-Suggested image path:
-
-```text
-docs/images/full-workflow.png
-```
-
-README image block:
-
-```html
 <p align="center">
   <img src="docs/images/full-workflow.png" width="1400">
 </p>
-```
-
+---
 [⬆ Back to Top](#table-of-contents)
 
 ---
@@ -434,13 +367,7 @@ Ko-AI-Pentest/
 └── templates/
     └── client/
 ```
-
-Suggested image path:
-
-```text
-docs/images/project-structure.png
-```
-
+---
 [⬆ Back to Top](#table-of-contents)
 
 ---
